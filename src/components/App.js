@@ -14,10 +14,21 @@ class App extends Component {
     return (
       <div className='main'>
         <h1>Your Dashboard</h1>
-        <Dashboard />
+        {this.props.loading === true
+          ? null
+          : <div>
+            <Dashboard />
+          </div>
+        }
       </div>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)

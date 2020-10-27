@@ -1,7 +1,9 @@
 import React from 'react'
 import List from './List'
+import { connect } from 'react-redux'
 
 const Dashboard = (props) => {
+    console.log(props)
     return (
         <List>
             <div label="Unanswered Polls">
@@ -14,4 +16,11 @@ const Dashboard = (props) => {
     )
 }
 
-export default Dashboard
+function mapStateToProps({ polls }) {
+    return {
+        pollIds: Object.keys(polls)
+            .sort((a, b) => polls[b].timestamp - polls[a].timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(Dashboard)
