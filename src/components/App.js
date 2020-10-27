@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
-import Dashboard from "./Dashboard";
-
+import React, { Component } from 'react'
+import Dashboard from "./Dashboard"
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
 import '../App.css';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
+
   render() {
     return (
       <div className='main'>
@@ -14,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App)
