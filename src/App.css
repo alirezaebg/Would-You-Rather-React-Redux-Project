@@ -1,0 +1,36 @@
+.tab-list {  
+    border-bottom: 1px solid #000;
+    padding-left: 0;
+}
+
+.tab-list {
+    position: relative;
+}
+  
+.tab-list-item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    width: 203px;
+}
+  
+.tab-list-active {
+    background-color: white;
+    border: solid #000;
+    border-width: 3px 3px 0 3px;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.main {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #e6d5b8;
+    width: 30%;
+}
