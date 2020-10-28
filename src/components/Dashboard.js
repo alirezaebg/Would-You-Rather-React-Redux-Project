@@ -1,25 +1,38 @@
 import React from 'react'
 import List from './List'
 import { connect } from 'react-redux'
+import Poll from './Poll'
 
+//Stateless functional component
 const Dashboard = (props) => {
-    console.log(props)
     return (
         <List>
             <div label="Unanswered Polls">
-                See ya later, <em>Alligator</em>!
+                {props.unansweredPollIds.map((id) => (
+                        <Poll id={id} />
+                ))}
             </div>
             <div label="Answered Polls">
-                After 'while, <em>Crocodile</em>!
+                {props.answeredPollIds.map((id) => (
+                        <Poll id={id} />
+                ))}
             </div>
-        </List>
+        </List >
     )
 }
 
-function mapStateToProps({ polls }) {
+function mapStateToProps({ authedUser, polls, users }) {
+
+    //answered polls Ids by authedUser
+    const answeredPollIds = authedUser ? Object.keys(users[authedUser].answers) : null
+    //unanswered polls Ids
+    const unansweredPollIds = authedUser ? Object.keys(polls).filter((poll) => {
+        return !answeredPollIds.includes(poll)
+    }) : null
+
     return {
-        pollIds: Object.keys(polls)
-            .sort((a, b) => polls[b].timestamp - polls[a].timestamp)
+        answeredPollIds,
+        unansweredPollIds
     }
 }
 
