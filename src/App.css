@@ -36,6 +36,9 @@
     width: 570px;
 }
 
+.dash-title {
+    padding: 4% 2%;
+}
 .poll-card {
     display: flex;
     flex-direction: column;
