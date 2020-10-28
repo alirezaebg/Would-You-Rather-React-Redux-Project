@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Dashboard from "./Dashboard"
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import PollQuestion from './PollQuestion'
 import '../App.css';
 
 class App extends Component {
@@ -15,11 +16,12 @@ class App extends Component {
     return (
       <Router>
         <div className='main'>
-          <h2 class='dash-title'>Welcome to <em>Would You Rather</em> Game</h2>
+          <h2 className='dash-title'>Welcome to <em>Would You Rather</em> Game</h2>
           {this.props.loading === true
             ? null
             : <div>
               <Route path='/' exact component={Dashboard} />
+              <Route path='/questions/:question_id' component={PollQuestion} />
             </div>
           }
         </div>

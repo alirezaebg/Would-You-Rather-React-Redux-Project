@@ -5,7 +5,7 @@ import Tab from './Tab';
 class List extends Component {
     static propTypes = {
         children: PropTypes.array.isRequired,
-    }   
+    }
 
     //activeTab is not required to be part of the redux store
     state = {
