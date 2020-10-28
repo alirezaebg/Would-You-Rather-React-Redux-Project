@@ -9,12 +9,12 @@ const Dashboard = (props) => {
         <List>
             <div label="Unanswered Polls">
                 {props.unansweredPollIds.map((id) => (
-                        <Poll id={id} />
+                        <Poll id={id} key={id}/>
                 ))}
             </div>
             <div label="Answered Polls">
                 {props.answeredPollIds.map((id) => (
-                        <Poll id={id} />
+                        <Poll id={id} key={id}/>
                 ))}
             </div>
         </List >
