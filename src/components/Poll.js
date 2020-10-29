@@ -13,11 +13,12 @@ class Poll extends Component {
             <div className='poll-card'>
                 <h3 className='poll-author'>{name} asks:</h3>
                 <div className='poll-preview'>
-                    <img
-                        src={avatarURL}
-                        className='avatar'
-                        alt={`Avatar of ${name}`}
-                    />
+                    <div className='avatar'>
+                        <img
+                            src={avatarURL}
+                            alt={`Avatar of ${name}`}
+                        />
+                    </div>
                     <div className='poll-info'>
                         <h4>Would You Rather</h4>
                         <h5>{`... ${optionOne.text.split(" ").slice(0, 2).join(' ')} ...`}</h5>
