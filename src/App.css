@@ -126,11 +126,9 @@
     margin-top: 5px;
 }
 
-.progress:after {
-    content: '20%';
+.progress div {
     display: block;
     background: orange;
-    width: 50%;
     height: 100%;
     border-radius: 9px;
     text-align: center;

@@ -26,7 +26,14 @@ class PollQuestion extends Component {
         const isAnswered = Object.keys(answers).includes(id)
         //AuthedUser answer to the poll
         const authedUserAnswer = (isAnswered) ? answers[id] : null
-        console.log(authedUserAnswer)
+
+        //Get the number of votes for each option
+        const optionOneVotes = optionOne.votes.length;
+        const optionTwoVotes = optionTwo.votes.length;
+        const optionOnePercentage = (optionOneVotes * 100) / (optionOneVotes + optionTwoVotes)
+        const optionTwoPercentage = (optionTwoVotes * 100) / (optionOneVotes + optionTwoVotes)
+        console.log(optionOnePercentage)
+        console.log(optionTwoPercentage)
 
         if (redirection) {
             return <Redirect to={`/questions/${id}`} />
@@ -72,7 +79,9 @@ class PollQuestion extends Component {
                                             ? <FontAwesomeIcon className='fa' icon={faCheckCircle} />
                                             : ''}
                                     </p>
-                                    <div className='progress'></div>
+                                    <div className='progress'>
+                                        <div style={{width: `${optionOnePercentage}%`}}>{optionOnePercentage}%</div>
+                                    </div>
                                 </div>
                                 <div className='result-option'>
                                     <p>Would you rather {optionTwo.text}
@@ -80,7 +89,9 @@ class PollQuestion extends Component {
                                             ? <FontAwesomeIcon className='fa' icon={faCheckCircle} />
                                             : ''}
                                     </p>
-                                    <div className='progress'></div>
+                                    <div className='progress'>
+                                        <div style={{width: `${optionTwoPercentage}%`}}>{optionTwoPercentage}%</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>}
