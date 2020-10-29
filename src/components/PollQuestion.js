@@ -7,11 +7,22 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 class PollQuestion extends Component {
 
     state = {
-        redirection: false
+        redirection: false,
+        option: ''
+    }
+
+    handleChange = (e) => {
+
+        const value = e.target.value
+        this.setState(() => ({
+            option: value
+        }))
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
+
+
 
     }
 
@@ -20,20 +31,20 @@ class PollQuestion extends Component {
         const { name, avatarURL } = this.props.user
         const { id, optionOne, optionTwo } = this.props.poll
         const { answers } = this.props.authedUser
-        const { redirection } = this.state
+        const { redirection, option } = this.state
 
         //find out if the question has been answered or not
         const isAnswered = Object.keys(answers).includes(id)
         //AuthedUser answer to the poll
         const authedUserAnswer = (isAnswered) ? answers[id] : null
 
-        //Get the number of votes for each option
+        //Get the number of votes for each option and obtain the percentage
         const optionOneVotes = optionOne.votes.length;
         const optionTwoVotes = optionTwo.votes.length;
         const optionOnePercentage = (optionOneVotes * 100) / (optionOneVotes + optionTwoVotes)
         const optionTwoPercentage = (optionTwoVotes * 100) / (optionOneVotes + optionTwoVotes)
-        console.log(optionOnePercentage)
-        console.log(optionTwoPercentage)
+
+        console.log(option)
 
         if (redirection) {
             return <Redirect to={`/questions/${id}`} />
@@ -57,12 +68,24 @@ class PollQuestion extends Component {
                             <h4>Would You Rather</h4>
                             <div>
                                 <div className='poll-option'>
-                                    <input type="radio" id="optionOne" name='poll' value="optionOne" />
-                                    <label className='radio-btn' htmlFor="optionOne">{optionOne.text}</label>
+                                    <input
+                                        type='radio'
+                                        id='optionOne'
+                                        name='poll'
+                                        value='optionOne'
+                                        onChange={this.handleChange}
+                                    />
+                                    <label className='radio-btn' htmlFor='optionOne'>{optionOne.text}</label>
                                 </div>
                                 <div className='poll-option'>
-                                    <input type="radio" id="optionTwo" name='poll' value="optionTwo" />
-                                    <label className='radio-btn' htmlFor="optionTwo">{optionTwo.text}</label>
+                                    <input
+                                        type='radio'
+                                        id='optionTwo'
+                                        name='poll'
+                                        value='optionTwo'
+                                        onChange={this.handleChange}
+                                    />
+                                    <label className='radio-btn' htmlFor='optionTwo'>{optionTwo.text}</label>
                                 </div>
                             </div>
                             <button className='poll-view-btn'>
@@ -80,7 +103,7 @@ class PollQuestion extends Component {
                                             : ''}
                                     </p>
                                     <div className='progress'>
-                                        <div style={{width: `${optionOnePercentage}%`}}>{optionOnePercentage}%</div>
+                                        <div style={{ width: `${optionOnePercentage}%` }}>{optionOnePercentage}%</div>
                                     </div>
                                 </div>
                                 <div className='result-option'>
@@ -90,7 +113,7 @@ class PollQuestion extends Component {
                                             : ''}
                                     </p>
                                     <div className='progress'>
-                                        <div style={{width: `${optionTwoPercentage}%`}}>{optionTwoPercentage}%</div>
+                                        <div style={{ width: `${optionTwoPercentage}%` }}>{optionTwoPercentage}%</div>
                                     </div>
                                 </div>
                             </div>
