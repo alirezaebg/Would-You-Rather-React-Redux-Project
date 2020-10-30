@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Henny+Penny&display=swap');
+
+.addMain {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e6d5b8;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid brown;
+    border-radius: 12px;
+}
+
+.addMain h1 {
+    background-color: #cee397;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 2px solid green;
+}
+
+.addMain h1, .addMain p, .addMain form {
+    padding: 2%;
+}
+
+.addForm {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.addForm h2, .addForm h3 {
+    margin: 1% 0;
+}
+
+.addForm h3 {
+    text-align: center;
+}
+
+.addForm {
+    position: relative;
+}
+
+.addForm button {
+    background-color: coral;
+    font-weight: 600;
+    
+}
+
+.addForm input, .addForm button {
+    margin: 2% 0;
+    padding: 0 1%;
+    height: 50px;
+    border-radius: 12px;
+    outline: none;
+}
+
+    
