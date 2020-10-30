@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import {handleSaveQuestionAnswer} from '../actions/shared'
 
 class PollQuestion extends Component {
 
     state = {
-        redirection: false,
         option: ''
     }
 
     handleChange = (e) => {
-
         const value = e.target.value
         this.setState(() => ({
             option: value
@@ -21,9 +19,10 @@ class PollQuestion extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const { option } = this.state
+        const { id } = this.props.poll
 
-
-
+        dispatchEvent(handleSaveQuestionAnswer(id, option))
     }
 
     render() {
@@ -31,7 +30,7 @@ class PollQuestion extends Component {
         const { name, avatarURL } = this.props.user
         const { id, optionOne, optionTwo } = this.props.poll
         const { answers } = this.props.authedUser
-        const { redirection, option } = this.state
+        
 
         //find out if the question has been answered or not
         const isAnswered = Object.keys(answers).includes(id)
@@ -43,12 +42,6 @@ class PollQuestion extends Component {
         const optionTwoVotes = optionTwo.votes.length;
         const optionOnePercentage = (optionOneVotes * 100) / (optionOneVotes + optionTwoVotes)
         const optionTwoPercentage = (optionTwoVotes * 100) / (optionOneVotes + optionTwoVotes)
-
-        console.log(option)
-
-        if (redirection) {
-            return <Redirect to={`/questions/${id}`} />
-        }
 
         return (
             <div className='poll-card'>
