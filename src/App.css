@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Henny+Penny&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +16,7 @@
     margin-bottom: -1px;
     padding: 0.5rem 0.75rem;
     cursor: pointer;
-    width: 272px;
+    width: 372px;
     text-align: center;
 }
   
@@ -33,13 +35,15 @@
     margin-left: auto;
     margin-right: auto;
     background-color: #e6d5b8;
-    width: 600px;
+    width: 800px;
 }
 
 .dash-title {
     padding: 4% 2%;
     text-align: center;
+    font-family: 'Henny Penny', cursive;
 }
+
 .poll-card {
     display: flex;
     flex-direction: column;
@@ -138,4 +142,72 @@
     margin-left: 5px;
     font-size: larger;
     color: #1f6f8b;
+}
+
+.nav {
+    background-color:#bedbbb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-decoration: none;
+    padding-left: 2%;
+}
+    
+nav li {
+    list-style-type: none;
+    padding: 15px 10px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.nav li:hover {
+    background-color: #8db596;
+}
+
+a {
+    text-decoration: none;
+    color: #252525;
+    font-family: 'Bitter', serif;
+}
+
+.nav div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding-right: 20px;
+}
+
+.nav div p {
+      padding-top: 15px;
+      margin-right: 20px;
+      font-family: 'Henny Penny', cursive;
+}
+
+.nav div button {
+    background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.nav div button:active {
+    transform: translateY(2px);
+}
+
+.power {
+      font-size: 1.7rem;
+      color: #333456;
+      padding: 15px 10px;
+}
+
+.power:hover {
+    background-color: #8db596;
 }

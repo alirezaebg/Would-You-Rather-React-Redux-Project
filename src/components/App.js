@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard"
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import PollQuestion from './PollQuestion'
+import Nav from './Nav'
 import '../App.css';
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
     return (
       <Router>
         <div className='main'>
-          <h2 className='dash-title'>Welcome to <em>Would You Rather</em> Game</h2>
+          <Nav />
+          <h1 className='dash-title'>Welcome to <em>Would You Rather</em> Game</h1>
           {this.props.loading === true
             ? null
             : <div>

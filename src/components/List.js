@@ -9,7 +9,7 @@ class List extends Component {
 
     //activeTab is not required to be part of the redux store
     state = {
-        activeTab: this.props.children[0].props.label
+        activeTab: this.props.children[0].props.label //selects the active tab (0 is for unanswered questions)
     }
 
     onClickTabItem = (tab) => {
