@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { handleAddPoll } from '../actions/shared'
 
 class NewPoll extends Component {
@@ -41,7 +42,11 @@ class NewPoll extends Component {
 
     render() {
 
-        const { optionA, optionB } = this.state
+        const { optionA, optionB, toHome } = this.state
+
+        if (toHome) {
+            return <Redirect to='/' />
+        }
 
         return (
             <div className='addMain'>

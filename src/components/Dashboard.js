@@ -24,11 +24,13 @@ const Dashboard = (props) => {
 function mapStateToProps({ authedUser, polls, users }) {
 
     //answered polls Ids by authedUser
-    const answeredPollIds = authedUser ? Object.keys(users[authedUser].answers) : null
+    let answeredPollIds = authedUser ? Object.keys(users[authedUser].answers) : null
+    answeredPollIds = answeredPollIds.sort((a,b) => polls[b].timestamp - polls[a].timestamp)
     //unanswered polls Ids
-    const unansweredPollIds = authedUser ? Object.keys(polls).filter((poll) => {
+    let unansweredPollIds = authedUser ? Object.keys(polls).filter((poll) => {
         return !answeredPollIds.includes(poll)
     }) : null
+    unansweredPollIds = unansweredPollIds.sort((a,b) => polls[b].timestamp - polls[a].timestamp)
 
     return {
         answeredPollIds,
