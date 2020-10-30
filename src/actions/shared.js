@@ -23,15 +23,15 @@ export function handleInitialData() {
     }
 }
 
-export function handleSaveQuestionAnswer(id, option) {
+export function handleSaveQuestionAnswer(qid, answer) {
     return (dispatch, getState) => {
 
         const { authedUser } = getState()
 
         const info = {
             authedUser,
-            id,
-            option,
+            qid,
+            answer,
         }
 
         return _saveQuestionAnswer(info)

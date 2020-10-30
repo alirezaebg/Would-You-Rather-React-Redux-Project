@@ -2,27 +2,32 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-import {handleSaveQuestionAnswer} from '../actions/shared'
+import { handleSaveQuestionAnswer } from '../actions/shared'
 
 class PollQuestion extends Component {
 
     state = {
-        option: ''
+        answer: ''
     }
 
     handleChange = (e) => {
         const value = e.target.value
         this.setState(() => ({
-            option: value
+            answer: value
         }))
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { option } = this.state
+        const { answer } = this.state
         const { id } = this.props.poll
+        const { dispatch } = this.props
 
-        dispatchEvent(handleSaveQuestionAnswer(id, option))
+        if (answer !== '') dispatch(handleSaveQuestionAnswer(id, answer))
+
+        this.setState (() => ({  //to prevent from transfering the same answer for the same user multiple times
+            answer: ''
+        }))
     }
 
     render() {
@@ -30,7 +35,7 @@ class PollQuestion extends Component {
         const { name, avatarURL } = this.props.user
         const { id, optionOne, optionTwo } = this.props.poll
         const { answers } = this.props.authedUser
-        
+
 
         //find out if the question has been answered or not
         const isAnswered = Object.keys(answers).includes(id)
@@ -40,8 +45,8 @@ class PollQuestion extends Component {
         //Get the number of votes for each option and obtain the percentage
         const optionOneVotes = optionOne.votes.length;
         const optionTwoVotes = optionTwo.votes.length;
-        const optionOnePercentage = (optionOneVotes * 100) / (optionOneVotes + optionTwoVotes)
-        const optionTwoPercentage = (optionTwoVotes * 100) / (optionOneVotes + optionTwoVotes)
+        const optionOnePercentage = ((optionOneVotes * 100) / (optionOneVotes + optionTwoVotes)).toFixed(1)
+        const optionTwoPercentage = ((optionTwoVotes * 100) / (optionOneVotes + optionTwoVotes)).toFixed(1)
 
         return (
             <div className='poll-card'>
@@ -96,7 +101,9 @@ class PollQuestion extends Component {
                                             : ''}
                                     </p>
                                     <div className='progress'>
-                                        <div style={{ width: `${optionOnePercentage}%` }}>{optionOnePercentage}%</div>
+                                        <div style={{ width: `${optionOnePercentage}%` }}>
+                                            {optionOnePercentage > 0 ? `${optionOnePercentage}%` : ''}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='result-option'>
@@ -106,7 +113,9 @@ class PollQuestion extends Component {
                                             : ''}
                                     </p>
                                     <div className='progress'>
-                                        <div style={{ width: `${optionTwoPercentage}%` }}>{optionTwoPercentage}%</div>
+                                        <div style={{ width: `${optionTwoPercentage}%` }}>
+                                            {optionTwoPercentage > 0 ? `${optionTwoPercentage}%` : ''}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

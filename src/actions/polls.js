@@ -8,9 +8,11 @@ export function receivePolls(polls) {
     }
 }
 
-export function updatePollAnswer(poll) {
+export function updatePollAnswer({ authedUser, qid, answer }) {
     return {
         type: UPDATE_POLL_ANSWER,
-        poll,
+        authedUser,
+        qid,
+        answer,
     }
 }
