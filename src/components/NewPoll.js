@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAddPoll } from '../actions/shared'
 
 class NewPoll extends Component {
 
     state = {
         optionA: '',
-        optionB: ''
+        optionB: '',
+        toHome: false
     }
 
     onChangeA = (e) => {
@@ -24,11 +26,22 @@ class NewPoll extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+
+        const { dispatch } = this.props
+        const { optionA, optionB } = this.state
+
+        dispatch(handleAddPoll(optionA, optionB))
+
+        this.setState(() => ({
+            optionA: '',
+            optionB: '',
+            toHome: true
+        }))
     }
 
     render() {
 
-        const {optionA, optionB} = this.state
+        const { optionA, optionB } = this.state
 
         return (
             <div className='addMain'>
