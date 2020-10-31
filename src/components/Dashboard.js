@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import List from './List'
-import Login from './Login'
 import { connect } from 'react-redux'
 import Poll from './Poll'
 
@@ -9,11 +8,8 @@ class Dashboard extends Component {
 
     render() {
 
-        const { authedUser } = this.props
         return (
             <div>
-                {authedUser === null
-                ? 
                 <List>
                     <div label="Unanswered Polls">
                         {this.props.unansweredPollIds.map((id) => (
@@ -26,7 +22,6 @@ class Dashboard extends Component {
                         ))}
                     </div>
                 </List >
-                : <Login /> }
             </div>
 
         )
