@@ -211,3 +211,56 @@ a {
 .power:hover {
     background-color: #8db596;
 }
+
+/* Leader Board styles */
+.leaderboard-card {
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid brown;
+    margin: 2%;
+    position: relative;
+}
+
+.leaderboard-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: Bitter;
+    position: absolute;
+    left: 35%;
+
+}
+
+.leaderboard-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    border: 2px solid green;
+    width: 100px;
+}
+
+.leaderboard-score h4 {
+    background-color: greenyellow;
+    width: 100%;
+    padding: 2% 0;
+    text-align: center;
+    border-bottom: 2px solid green;
+}
+
+.leaderboard-score h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Dashboard from "./Dashboard"
 import { connect } from 'react-redux'
+import Dashboard from './Dashboard'
 import { handleInitialData } from '../actions/shared'
 import PollQuestion from './PollQuestion'
+import Leaderboard from './Leaderboard'
 import NewPoll from './NewPoll'
 import Nav from './Nav'
 import '../styles/App.css';
@@ -27,6 +28,7 @@ class App extends Component {
               <Route path='/' exact component={Dashboard} />
               <Route path='/questions/:question_id' component={PollQuestion} />
               <Route path='/add' component={NewPoll} />
+              <Route path='/leaderboard' component={Leaderboard} />
             </div>
           }
         </div>
