@@ -9,6 +9,7 @@ import NewPoll from './NewPoll'
 import Nav from './Nav'
 import '../styles/App.css';
 import '../styles/AddPoll.css'
+import Login from './Login'
 
 class App extends Component {
 
@@ -21,9 +22,9 @@ class App extends Component {
       <Router>
         <div className='main'>
           <Nav />
-          <h1 className='dash-title'>Welcome To <em>Would You Rather</em> Game</h1>
+          <h1 className='dash-title'>Welcome To <em>Would You Rather</em> Game</h1>         
           {this.props.loading === true
-            ? null
+            ? <Route path='/' exact component={Login} />
             : <div>
               <Route path='/' exact component={Dashboard} />
               <Route path='/questions/:question_id' component={PollQuestion} />

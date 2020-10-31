@@ -25,7 +25,7 @@ class PollQuestion extends Component {
 
         if (answer !== '') dispatch(handleSaveQuestionAnswer(id, answer))
 
-        this.setState (() => ({  //to prevent from transfering the same answer for the same user multiple times
+        this.setState(() => ({  //to prevent from transfering the same answer for the same user multiple times
             answer: ''
         }))
     }
@@ -86,7 +86,10 @@ class PollQuestion extends Component {
                                     <label className='radio-btn' htmlFor='optionTwo'>{optionTwo.text}</label>
                                 </div>
                             </div>
-                            <button className='poll-view-btn'>
+                            <button
+                                className='poll-view-btn'
+                                type='submit'
+                            >
                                 submit
                             </button>
                         </form>

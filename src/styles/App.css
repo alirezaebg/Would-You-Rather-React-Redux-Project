@@ -264,3 +264,47 @@ a {
     left: 1%;
 }
 
+/* Login page styles */
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3%;
+    border: 2px solid brown;
+    margin: 0 30%;
+    border-radius: 12px;
+    background-color: #fcf1f1;
+}
+
+.loginForm {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.login div {
+    display: flex;
+    justify-content: center;
+}
+
+.login img {
+    width: 70%;
+}
+
+.loginForm select, .loginForm option {
+    padding: 2%;
+    outline: none;
+    font-weight: 600;
+}
+
+
+.loginForm button {
+    width: 250px;
+    background-color: coral;
+    padding: 2%;
+    border-radius: 12px;
+    font-weight: 600;
+    outline: none;
+    margin: 30px 0;
+}

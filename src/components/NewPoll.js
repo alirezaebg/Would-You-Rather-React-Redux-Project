@@ -67,7 +67,7 @@ class NewPoll extends Component {
                         value={optionB}
                         onChange={this.onChangeB}
                     />
-                    <button>
+                    <button type='submit'>
                         submit
                     </button>
                 </form>
