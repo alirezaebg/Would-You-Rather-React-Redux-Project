@@ -32,13 +32,17 @@ function mapStateToProps({ authedUser, polls, users }) {
 
     //answered polls Ids by authedUser
     let answeredPollIds = authedUser ? Object.keys(users[authedUser].answers) : null
-    answeredPollIds = answeredPollIds.sort((a, b) => polls[b].timestamp - polls[a].timestamp)
+    answeredPollIds = answeredPollIds
+        ? answeredPollIds.sort((a, b) => polls[b].timestamp - polls[a].timestamp)
+        : null
     //unanswered polls Ids
     let unansweredPollIds = authedUser ? Object.keys(polls).filter((poll) => {
         return !answeredPollIds.includes(poll)
     }) : null
-    unansweredPollIds = unansweredPollIds.sort((a, b) => polls[b].timestamp - polls[a].timestamp)
-    console.log('here')
+    unansweredPollIds = unansweredPollIds
+        ? unansweredPollIds.sort((a, b) => polls[b].timestamp - polls[a].timestamp)
+        : null
+
     return {
         answeredPollIds,
         unansweredPollIds,

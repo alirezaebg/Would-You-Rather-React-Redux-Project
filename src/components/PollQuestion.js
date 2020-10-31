@@ -31,11 +31,9 @@ class PollQuestion extends Component {
     }
 
     render() {
-
         const { name, avatarURL } = this.props.user
         const { id, optionOne, optionTwo } = this.props.poll
-        const { answers } = this.props.authedUser
-
+        const { answers } = this.props.loggedin
 
         //find out if the question has been answered or not
         const isAnswered = Object.keys(answers).includes(id)
@@ -137,7 +135,10 @@ function mapStateToProps({ authedUser, polls, users }, props) {
     return {
         user: poll ? users[poll.author] : null,  //user who asked the poll
         poll: poll ? poll : null,                //the poll itself
-        authedUser: users[authedUser]            //currently logged in user
+        authedUser,
+        loggedin: authedUser                   //currently logged in user
+            ? users[authedUser]
+            : null
     }
 }
 

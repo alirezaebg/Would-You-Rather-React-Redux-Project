@@ -15,7 +15,7 @@ function Nav(props) {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/add' >
+                    <NavLink to='/new' >
                         New Poll
                     </NavLink>
                 </li>

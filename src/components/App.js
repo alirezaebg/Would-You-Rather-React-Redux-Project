@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Dashboard from './Dashboard'
 import { handleInitialData } from '../actions/shared'
 import PollQuestion from './PollQuestion'
 import Leaderboard from './Leaderboard'
 import NewPoll from './NewPoll'
+import Login from './Login'
 import Nav from './Nav'
 import '../styles/App.css';
 import '../styles/AddPoll.css'
-import Login from './Login'
+
 
 class App extends Component {
 
@@ -21,16 +22,22 @@ class App extends Component {
     return (
       <Router>
         <div className='main'>
-          <Nav />
-          <h1 className='dash-title'>Welcome To <em>Would You Rather</em> Game</h1>         
-          {this.props.loading === true
-            ? <Route path='/' exact component={Login} />
-            : <div>
-              <Route path='/' exact component={Dashboard} />
-              <Route path='/questions/:question_id' component={PollQuestion} />
-              <Route path='/add' component={NewPoll} />
-              <Route path='/leaderboard' component={Leaderboard} />
-            </div>
+          {this.props.authedUser === null
+            ? (
+              <Route path='/' component={Login} />
+            )
+            : (
+              <Fragment>
+                <Nav />
+                <h1 className='dash-title'>Welcome To <em>Would You Rather</em> Game</h1>
+                <Switch>
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/questions/:question_id' component={PollQuestion} />
+                  <Route path='/new' component={NewPoll} />
+                  <Route path='/leaderboard' component={Leaderboard} />
+                </Switch>
+              </Fragment>
+            )
           }
         </div>
       </Router>
@@ -41,7 +48,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 
