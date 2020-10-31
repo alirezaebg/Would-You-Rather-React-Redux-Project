@@ -114,6 +114,9 @@ class PollQuestion extends Component {
                                             {optionOnePercentage > 0 ? `${optionOnePercentage}%` : ''}
                                         </div>
                                     </div>
+                                    <div>
+                                        ({optionOneVotes} out of {optionOneVotes + optionTwoVotes} votes)
+                                    </div>
                                 </div>
                                 <div className='result-option'>
                                     <p>Would you rather {optionTwo.text}
@@ -125,6 +128,9 @@ class PollQuestion extends Component {
                                         <div style={{ width: `${optionTwoPercentage}%` }}>
                                             {optionTwoPercentage > 0 ? `${optionTwoPercentage}%` : ''}
                                         </div>
+                                    </div>
+                                    <div>
+                                        ({optionTwoVotes} out of {optionOneVotes + optionTwoVotes} votes)
                                     </div>
                                 </div>
                             </div>
