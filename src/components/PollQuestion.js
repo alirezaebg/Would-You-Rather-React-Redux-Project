@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { handleSaveQuestionAnswer } from '../actions/shared'
+import { Redirect } from 'react-router-dom'
 
 class PollQuestion extends Component {
 
@@ -31,9 +32,16 @@ class PollQuestion extends Component {
     }
 
     render() {
+
+        if (this.props.wrongID === true) {
+            return <Redirect to='/questions/wrong_id' />;
+        }
+
         const { name, avatarURL } = this.props.user
         const { id, optionOne, optionTwo } = this.props.poll
         const { answers } = this.props.loggedin
+
+
 
         //find out if the question has been answered or not
         const isAnswered = Object.keys(answers).includes(id)
@@ -131,11 +139,12 @@ class PollQuestion extends Component {
 function mapStateToProps({ authedUser, polls, users }, props) {
     const { question_id } = props.match.params
     const poll = polls[question_id]
+    const wrongID = poll ? false : true
 
     return {
         user: poll ? users[poll.author] : null,  //user who asked the poll
         poll: poll ? poll : null,                //the poll itself
-        authedUser,
+        wrongID,
         loggedin: authedUser                   //currently logged in user
             ? users[authedUser]
             : null

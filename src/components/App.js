@@ -8,6 +8,7 @@ import Leaderboard from './Leaderboard'
 import NewPoll from './NewPoll'
 import Login from './Login'
 import Nav from './Nav'
+import NotFound from './NotFound'
 import '../styles/App.css';
 import '../styles/AddPoll.css'
 
@@ -32,9 +33,11 @@ class App extends Component {
                 <h1 className='dash-title'>Welcome To <em>Would You Rather</em> Game</h1>
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
-                  <Route path='/questions/:question_id' component={PollQuestion} />
+                  <Route path='/questions/wrong_id' component={NotFound} />
+                  <Route path='/questions/:question_id' component={PollQuestion} />                
                   <Route path='/new' component={NewPoll} />
                   <Route path='/leaderboard' component={Leaderboard} />
+                  <Route component={NotFound} />
                 </Switch>
               </Fragment>
             )
